@@ -1,0 +1,67 @@
+<!DOCTYPE data-dictionary SYSTEM "data-dictionary.dtd">
+<data-dictionary name="EmployeeManager">
+	<table name="employee_manager">
+		<columns>
+			<column name="id">
+				<data-type>BIGINT</data-type>
+				<nullable>false</nullable>
+			</column>
+            <column name="name">
+                     <data-type>CHAR</data-type>
+                     <max-size>25</max-size>
+                     <nullable>false</nullable>
+            </column>
+            <column name="dob">
+                     <data-type>CHAR</data-type>
+                     <max-size>30</max-size>
+                     <nullable>false</nullable>
+            </column>
+            <column name="gender">
+                     <data-type>CHAR</data-type>
+                     <max-size>10</max-size>
+                     <nullable>false</nullable>
+            </column>
+            <column name="mobile">
+                     <data-type>CHAR</data-type>
+                     <max-size>15</max-size>
+                     <nullable>false</nullable>
+            </column>
+            <column name="email_id">
+                     <data-type>CHAR</data-type>
+                     <max-size>100</max-size>
+                     <nullable>false</nullable>
+            </column>
+            <column name="language">
+                     <data-type>CHAR</data-type>
+                     <max-size>40</max-size>
+                     <nullable>false</nullable>
+            </column>
+			<column name="nationality">
+                     <data-type>CHAR</data-type>
+                     <max-size>15</max-size>
+                     <nullable>false</nullable>
+            </column>
+			<column name="address">
+                     <data-type>CHAR</data-type>
+                     <max-size>30</max-size>
+                     <nullable>false</nullable>
+            </column>
+			<column name="state">
+                     <data-type>CHAR</data-type>
+                     <max-size>15</max-size>
+                     <nullable>false</nullable>
+            </column>
+			<column name="pincode">
+                     <data-type>CHAR</data-type>
+                     <max-size>10</max-size>
+                     <nullable>false</nullable>
+            </column>
+         </columns>
+         <!--Primary Key-->
+         <primary-key name="EmployeeManager_PK">
+                  <primary-key-column>id</primary-key-column>
+         </primary-key>
+	</table>
+	
+	
+</data-dictionary>

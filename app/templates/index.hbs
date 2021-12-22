@@ -1,0 +1,35 @@
+{{#nav-bar}}{{/nav-bar}}
+<div class="m-5 container">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Mail ID</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each model as |employee|}}
+                <tr>
+                    <th scope="row">{{employee.ID}}</th>
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Email_ID}}</td>
+                    <td>{{employee.Mobile}}</td>
+                    <td>
+                        {{#link-to 'employee' (query-params id=employee.ID)}}<input type="button" value="View" class="button">{{/link-to}}
+                        {{#link-to 'edit-employee' (query-params id=employee.ID)}}<input type="button" value="Edit" class="button">{{/link-to}}
+                        <input type="button" value="Delete" {{action "empDelete" employee.ID}} class="button">
+                    </td>
+                </tr>
+            {{/each}}
+            
+            
+        </tbody>
+        </table>
+
+    
+</div>
+
+{{outlet}}

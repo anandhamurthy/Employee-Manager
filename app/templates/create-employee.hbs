@@ -1,0 +1,163 @@
+<div class="create-form">
+    <form {{action "empSubmit" on="submit"}}>
+        <div>
+        <p class="title">Enter Details</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="Name" Description="This is Name Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="text" placeholder="Full Name" class="input" onchange={{action (mut emp_name) value="target.value"}}>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="DOB" Description="This is DOB Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="date" class="input" onchange={{action (mut dob) value="target.value"}}>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="Mobile" Description="This is Mobile Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="number" class="input" placeholder="Mobile No."  onchange={{action (mut mobile) value="target.value"}}>
+                        </div>            
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="Address" Description="This is Address Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="text" class="input" placeholder="Address" onchange={{action (mut address) value="target.value"}}>  
+                        </div>          
+                    </div>
+
+                    
+
+                    <div class="d-flex flex-row justify-content-between mt-4">
+                        {{#help-tip Title="State" Description="This is State Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                        {{#basic-dropdown as |dd|}}
+                        {{#dd.trigger class="trigger-bootstrap-feel"}}<input required value={{readonly state}} placeholder="Select State"> {{/dd.trigger}}
+
+                        {{#dd.content class="content-bootstrap-feel"}}
+                            
+                            <p class="m-0 p-0">
+                            <input type="radio" class="m-0 p-0" style="width: 50px;" id="s1" value="Tamil Nadu" name="state" onchange={{action (mut state) value="target.value"}}>
+                            <label for="s1">Tamil Nadu</label>
+                            </p>
+                            <p class="m-0 p-0">
+                            <input type="radio"  class="m-0 p-0" style="width: 50px;" id="s2" value="Kerala" name="state" onchange={{action (mut state) value="target.value"}}>
+                            <label for="s2">Kerala</label>
+                            </p>
+                            <p class="m-0 p-0">
+                            <input type="radio" class="m-0 p-0" style="width: 50px;" id="s3" value="AP" name="state" onchange={{action (mut state) value="target.value"}}>
+                            <label for="s3">AP</label>
+                            </p>
+                            <p class="m-0 p-0">
+                            <input type="radio" class="m-0 p-0" style="width: 50px;" id="s4" value="Karnataka" name="state" onchange={{action (mut state) value="target.value"}}>
+                            <label for="s4">Karnataka</label>
+                            </p>
+                            
+                        {{/dd.content}}
+                        {{/basic-dropdown}}    
+                        </div>        
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between mt-4">
+                        {{#help-tip Title="Pincode" Description="This is Pincode Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="number" class="input" placeholder="Pincode" onchange={{action (mut pincode) value="target.value"}}> 
+                        </div>           
+                    </div>
+
+                    
+                </div>
+
+                <div class="col-sm">
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="Gender" Description="This is Gender Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            {{#basic-dropdown as |dd|}}
+                            {{#dd.trigger class="trigger-bootstrap-feel"}}<input required value={{readonly gender}} placeholder="Select Gender"> {{/dd.trigger}}
+
+                            {{#dd.content class="content-bootstrap-feel"}}
+                                <p class="m-0 p-0">
+                                    <input class="m-0 p-0" style="width: 50px;" type="radio" id="male" name="gender" onchange={{action (mut gender) "Male"}}>
+                                    <label for="male">Male</label>
+                                </p>
+                                <p class="m-0 p-0">
+                                    <input class="m-0 p-0" style="width: 50px;" type="radio" id="female" name="gender" onchange={{action (mut gender) "Female"}}>
+                                    <label for="female">Female</label>
+                                </p>
+                            {{/dd.content}}
+                            {{/basic-dropdown}}
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="d-flex flex-row justify-content-between mt-4">
+                        {{#help-tip Title="Email ID" Description="This is Email ID Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            <input required type="email" class="input" placeholder="Email ID" onchange={{action (mut email_id) value="target.value"}}>          
+                        </div>  
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-between mt-4">
+                        
+                        {{#help-tip Title="Languages" Description="This is Languages Known Field."}}{{/help-tip}}
+                        
+                        <div class="align-self-center">
+                            {{#basic-dropdown onClose=(action "onLanguageSelected") as |dd|}}
+                            
+                            {{#dd.trigger class="trigger-bootstrap-feel"}}<input required value={{selected_language}} placeholder="Select Languages"> {{/dd.trigger}}
+
+                            {{#dd.content class="content-bootstrap-feel"}}
+                                {{#each language as |lang|}}
+                                <div class="m-0 p-0 d-flex flex-row">
+                                    <div class="m-0 p-0" style="width: 50px;">
+                                        {{input type="checkbox" class="m-0 p-0" id=lang.label style="width: 50px;" checked=lang.isChecked}}
+                                    </div>
+                                    <p class="m-0 p-0">{{lang.label}}</p>
+                                </div>
+                                {{/each}}
+                            {{/dd.content}}
+                            {{/basic-dropdown}}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        {{#help-tip Title="Nationality" Description="This is Nationality Field."}}{{/help-tip}}
+                        <div class="align-self-center">
+                            {{#basic-dropdown as |dd|}}
+                            {{#dd.trigger class="trigger-bootstrap-feel"}}<input required value={{readonly nationality}} placeholder="Select Nationality"> {{/dd.trigger}}
+
+                            {{#dd.content class="content-bootstrap-feel"}}
+                                <p class="m-0 p-0">
+                                    <input class="m-0 p-0" style="width: 50px;" type="radio" id="indian" name="nationality" onchange={{action (mut nationality) "Indian"}}>
+                                    <label for="indian">Indian</label>
+                                </p>
+                                <p class="m-0 p-0">
+                                    <input class="m-0 p-0" style="width: 50px;" type="radio" id="other" name="nationality" onchange={{action (mut nationality) "Other"}}>
+                                    <label for="other">Other</label>
+                                </p>
+                            {{/dd.content}}
+                            {{/basic-dropdown}}        
+                        </div>  
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-center mt-5">
+            <input class="input" type="submit" value="Submit" class="button">
+            <input class="input" type="reset" value="Reset" class="button">
+            <input class="input" type="button" value="Back" class="button">
+        </div>
+        
+       </div>
+    </form>
+</div>
+{{outlet}}
